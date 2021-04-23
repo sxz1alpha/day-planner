@@ -1,9 +1,5 @@
-var taskText = {
-        id: "",
-        val: ""
-};
-
-    
+var taskText = [];
+  
 
 var timeBlockContainerEl = document.querySelector("#container");
 
@@ -13,7 +9,7 @@ var timeBlockGenerator = function() {
 
     //load saved tasks from local storage
     
-
+    
     for (var i = 0; i < 24; i++) {
         //creates 24 time blocks
         var timeBlockRowEl = document.createElement("a");
@@ -21,8 +17,13 @@ var timeBlockGenerator = function() {
 
         
         // assign each time block an id between 1-24 col-2 and show the time
-        var hourEl = document.createElement("column");
+        var hourEl = document.createElement("div");
         hourEl.setAttribute("class", "col-1 hour");
+        var time = 1;
+        $('.hour').each(function() {
+            $(this).html(time + ":00");
+            time++;
+        });
         timeBlockRowEl.appendChild(hourEl);
 
 
@@ -50,9 +51,20 @@ var timeBlockGenerator = function() {
     
     $(".saveBtn").click(function() {
         // this targets the previous sibling and gets its value. in this case the input field right next to the button
-        var taskText = $(this).prev().val();
-        console.log(taskText);
+        var taskVal = $(this).prev().val();
+        // this gets the input fields ID
+        var taskId = $(this).prev().attr("id");
+
+        // these test that i have both
+        console.log(taskVal);
+        console.log(taskId);
         
+        //takes the input fields id and value and makes a JSON object..... i think... maybe.
+        taskItem = {taskId, taskVal}
+
+        //pushes the objext into the taskText array
+        taskText.push(taskItem);
+        //saves the taskText array to local storage
         localStorage.setItem("taskText", JSON.stringify(taskText));
         console.log("saved task to array");
     });
@@ -65,6 +77,3 @@ var timeBlockGenerator = function() {
 timeBlockGenerator();
 
 // using a set interval of 1 minute to refresh the color coding of blocks
-// var taskMonitor = function() {
-    
-// }
