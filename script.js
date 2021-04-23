@@ -1,4 +1,9 @@
-var taskText = {};
+var taskText = {
+        id: "",
+        val: ""
+};
+
+    
 
 var timeBlockContainerEl = document.querySelector("#container");
 
@@ -33,7 +38,7 @@ var timeBlockGenerator = function() {
         saveBtn.setAttribute("id", "saveBtn")
         timeBlockRowEl.appendChild(saveBtn);
 
-        //assigns each row a unique id
+        //assigns each input field a unique id
         var blockId = 1;
         $('input').each(function() {
             $(this).attr('id', 'input' + blockId);
@@ -43,21 +48,19 @@ var timeBlockGenerator = function() {
         timeBlockContainerEl.appendChild(timeBlockRowEl);
     }
     
-    $("#saveBtn").click(function() {
-        var taskText = $("#taskInput").val;
-        console.log(JSON.stringify(taskText));
+    $(".saveBtn").click(function() {
+        // this targets the previous sibling and gets its value. in this case the input field right next to the button
+        var taskText = $(this).prev().val();
+        console.log(taskText);
+        
         localStorage.setItem("taskText", JSON.stringify(taskText));
         console.log("saved task to array");
-
-        console.log(document.getElementById ("#input1"));
-
     });
-
-
+    
 };
 
 
-
+// get to the point i can console log the input fields with the butrton clicked make shared Id for input field and button
 
 timeBlockGenerator();
 
