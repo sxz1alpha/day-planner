@@ -5,13 +5,16 @@ $("#container").append('<ul class="time-block" /ul>')
 //creates a for loop that generates the html elements for the project
 for (let i = 0; i < 24; i++) {
     $(".time-block").append(`
-        <form class="row"> 
+        <li>
+          <form class="row"> 
             <div class="hour col-2">${i}:00</div> 
             <input class="col-8" id="input-${i}"></input>
-            <button class="saveBtn col-1" id="saveBtn-${i}><i class="far fa-save"></i></button>
-        </form>
+            <button class="saveBtn col-1" id="saveBtn-${i}"><i class="far fa-save"></i></button>
+          </form>
+        </li>
         `
     );
+    //applys custom css to the input fields depending on the time of day.
     if (i <parseInt(moment().format('h'))) {
         $(`#input-${i}`).addClass('past');
     } else if (i === parseInt(moment().format('h'))) {
@@ -19,7 +22,15 @@ for (let i = 0; i < 24; i++) {
     } else {
         $(`#input-${i}`).addClass('future');
     }
-
+    //save button function that dynamically targets the input field its related to.
+    $('.saveBtn').click(function() {
+        
+      let text = $(`#input-${i}`).val();
+      window.localStorage.setItem(`#input-${i}`, text);
+        
+    });
+    //loads the input field text from local storage
+    $(`#input-${i}`).val(window.localStorage.getItem(`#input-${i}`));
     
 }
 
