@@ -1,5 +1,5 @@
 // appends date and time to the top of the page in the jumbotron section
-$('.jumbotron').append(moment().format('LTS'));
+$('.jumbotron').append(moment().format('LL'));
 //adds an unordered list to the container div
 $("#container").append('<ul class="time-block" /ul>')
 //creates a for loop that generates the html elements for the project
@@ -8,16 +8,15 @@ for (let i = 0; i < 24; i++) {
         <form class="row"> 
             <div class="hour col-2">${i}:00</div> 
             <input class="col-8" id="input-${i}"></input>
-            <button class="saveBtn col-1"></button>
+            <button class="saveBtn col-1" id="saveBtn-${i}><i class="far fa-save"></i></button>
         </form>
         `
     );
-    // implaments moment JS and color codes the input fields
-    if (i < parseInt(moment().format('h'))) {
+    if (i <parseInt(moment().format('h'))) {
         $(`#input-${i}`).addClass('past');
     } else if (i === parseInt(moment().format('h'))) {
         $(`#input-${i}`).addClass('present');
-    } else if (i > parseInt(moment().format('h'))) {
+    } else {
         $(`#input-${i}`).addClass('future');
     }
 
@@ -26,8 +25,8 @@ for (let i = 0; i < 24; i++) {
 
 
 
-//below is my original approach to this assignment. i was really struggling with the concept of the for loop and how i could take the value of i and 
-// apply it throughout the rest of the for loop. and by struggling i mean i had no idea. ialso learned from him that ` can be used to make a multi-line string
+//below is my original approach to this assignment. I was really struggling with the concept of the for loop and how i could take the value of i and 
+// apply it throughout the rest of the for loop. and by struggling i mean i had no idea. i also learned from him that ` can be used to make a multi-line string
 // something i feel should be taught first day in our course but i dont think was ever mentioned. Any ways i kept my legacy code so you can see how i progressed
 
 
