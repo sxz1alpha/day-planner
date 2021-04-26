@@ -1,4 +1,4 @@
-# day-planner
+# Day Planner
 
 This is a simple day planner for busy professionals. There are time blocks for regular buisness hours that dynamically change color
 to reflect weather that block is in the past, present or future. As a military veteran i elected to make the planner on military time.
