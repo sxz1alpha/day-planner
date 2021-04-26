@@ -8,4 +8,5 @@ The deployed application can be found here:
 
 https://sxz1alpha.github.io/day-planner/
 
-![image](https://user-images.githubusercontent.com/80006081/116150867-2a075080-a6a1-11eb-9085-1d5d7aa72129.png)
+![image](https://user-images.githubusercontent.com/80006081/116151125-76529080-a6a1-11eb-8bb7-c20605f29f99.png)
+
