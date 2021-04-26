@@ -3,7 +3,7 @@ $('.jumbotron').append(moment().format('LL'));
 //adds an unordered list to the container div
 $("#container").append('<ul class="time-block" /ul>')
 //creates a for loop that generates the html elements for the project
-for (let i = 0; i < 24; i++) {
+for (let i = 9; i < 18; i++) {
     $(".time-block").append(`
         <li>
           <form class="row"> 
@@ -15,9 +15,9 @@ for (let i = 0; i < 24; i++) {
         `
     );
     //applys custom css to the input fields depending on the time of day.
-    if (i <parseInt(moment().format('h'))) {
+    if (i <parseInt(moment().format('H'))) {
         $(`#input-${i}`).addClass('past');
-    } else if (i === parseInt(moment().format('h'))) {
+    } else if (i === parseInt(moment().format('H'))) {
         $(`#input-${i}`).addClass('present');
     } else {
         $(`#input-${i}`).addClass('future');
@@ -36,10 +36,11 @@ for (let i = 0; i < 24; i++) {
 
 
 
-//below is my original approach to this assignment. I was really struggling with the concept of the for loop and how i could take the value of i and 
-// apply it throughout the rest of the for loop. and by struggling i mean i had no idea. i also learned from him that ` can be used to make a multi-line string
-// something i feel should be taught first day in our course but i dont think was ever mentioned. Any ways i kept my legacy code so you can see how i progressed
-
+//below is my original approach to this assignment. I was really struggling with the concept of the for loop and how i could take the value of "i" and 
+// apply it throughout the rest of the for loop and by struggling I mean I had no idea. I got a tutor who showed me how it pull the values to target elements, id's and classes that were dynamically created.
+// I also learned from him that ` can be used to make a multi-line string. This allowed me to append all of the elements i wanted at once.
+// the multi-line string is something i feel should be taught first day in our course but i dont think was ever mentioned. Any ways i kept my legacy code so you can see how i progressed
+// though i do plan to delete it after i have been graded.
 
 // var timeBlockContainerEl = document.querySelector("#container");
 
