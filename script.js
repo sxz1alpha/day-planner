@@ -1,22 +1,25 @@
-$("#container").append('<ul class="listgroup" /ul>')
+// appends date and time to the top of the page in the jumbotron section
+$('.jumbotron').append(moment().format('LTS'));
+//adds an unordered list to the container div
+$("#container").append('<ul class="time-block" /ul>')
 //creates a for loop that generates the html elements for the project
 for (let i = 0; i < 24; i++) {
-    $(".listgroup").append(`
-        <li class="row time-block"> 
+    $(".time-block").append(`
+        <form class="row"> 
             <div class="hour col-2">${i}:00</div> 
             <input class="col-8" id="input-${i}"></input>
             <button class="saveBtn col-1"></button>
-        </li>
+        </form>
         `
     );
-
-    if (i === parseInt(moment().format('H'))) {
-        $(`#input-${i}`).addclass('present');
-    } else if (i < parseInt(moment().format('H'))) {
-        $(`#input-${i}`).addclass('past');
-    } // else (i > parseInt(moment().format('H'))) 
-      //  $(`#input-${i}`).addclass('future');
- //   };
+    // implaments moment JS and color codes the input fields
+    if (i < parseInt(moment().format('h'))) {
+        $(`#input-${i}`).addClass('past');
+    } else if (i === parseInt(moment().format('h'))) {
+        $(`#input-${i}`).addClass('present');
+    } else if (i > parseInt(moment().format('h'))) {
+        $(`#input-${i}`).addClass('future');
+    }
 
     
 }
